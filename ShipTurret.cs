@@ -69,7 +69,7 @@ namespace VoxelSpace
 			}
 
 			float range = this.GetRangeTo(target);
-			if (range < this.MaxRange)
+			if (range > this.MaxRange)
 			{
 				return;
 			}
