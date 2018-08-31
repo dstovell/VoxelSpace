@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace VoxelSpace
 {
-	public class Damagable : MonoBehaviour
+	public class Damagable : ShipEntity
 	{
 		public static List<Damagable> All = new List<Damagable>();
 
@@ -46,7 +46,11 @@ namespace VoxelSpace
 		void Awake()
 		{
 			All.Add(this);
+
+			this.ParentShip = this.GetComponentInParent<Ship>();
 			this.Health = this.MaxHealth;
+
+			this.InitEntity();
 		}
 
 		void OnDestroy()

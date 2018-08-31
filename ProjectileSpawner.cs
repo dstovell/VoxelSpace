@@ -22,7 +22,7 @@ namespace VoxelSpace
 				this.Projectiles = new Projectile[this.MaxSpawnables];
 				for (int i=0; i<this.Projectiles.Length; i++)
 				{
-					GameObject go = GameObject.Instantiate(this.Prefab);
+					GameObject go = GameObject.Instantiate(this.Prefab, this.transform);
 					Projectile p = go.GetComponent<Projectile>();
 					if (p == null)
 					{

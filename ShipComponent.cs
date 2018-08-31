@@ -4,9 +4,17 @@ using System.Collections;
 
 namespace VoxelSpace
 {
-	public abstract class ShipComponent : Showable
+	public abstract class ShipComponent : ShipEntity
 	{
 		public Damagable [] Damagables;
+
+		public void InitComponent()
+		{
+			this.ParentShip = this.GetComponentInParent<Ship>();
+			this.FindDamagables();
+
+			this.InitEntity();
+		}
 
 		public void FindDamagables()
 		{

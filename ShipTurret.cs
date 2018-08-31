@@ -8,8 +8,6 @@ namespace VoxelSpace
 	{
 		const float MaxDistance = 999999.0f;
 
-		public Ship ParentShip;
-
 		public Damagable CurrentTarget;
 
 		public ProjectileType Ammo;
@@ -19,16 +17,6 @@ namespace VoxelSpace
 
 		public Transform [] ProjectileExit;
 		public int nextProjectileExit = 0;
-
-		protected override void OnShow()
-		{
-			this.gameObject.SetActive(true);
-		}
-
-		protected override void OnHide()
-		{
-			this.gameObject.SetActive(false);
-		}
 
 		public float GetRangeTo(Damagable d)
 		{
@@ -117,8 +105,7 @@ namespace VoxelSpace
 
 		public void Awake()
 		{
-			this.ParentShip = this.GetComponentInParent<Ship>();
-			this.FindDamagables();
+			this.InitComponent();
 		}
 
 		public void Update()

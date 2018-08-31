@@ -4,7 +4,7 @@ using System.Collections;
 
 namespace VoxelSpace
 {
-	public class Ship : MonoBehaviour
+	public class Ship : Moveable
 	{
 		public enum RenderMode
 		{
@@ -14,6 +14,8 @@ namespace VoxelSpace
 			Hybrid
 		}
 		public RenderMode Mode = RenderMode.Exterior;
+
+		public Gameplay.Team Team;
 
 		public ShipInterior Interior;
 		public ShipExterior Exterior;
@@ -40,6 +42,36 @@ namespace VoxelSpace
 			this.Damagables = this.GetComponentsInChildren<Damagable>();
 		}
 
+		public bool IsHostile(Gameplay.Team t)
+		{
+			return Gameplay.GameplayManager.Instance.AreHostile(this.Team, t);
+		}
+
+		public bool IsHostile(Ship s)
+		{
+			return Gameplay.GameplayManager.Instance.AreHostile(this.Team, s.Team);
+		}
+
+		public bool IsFriendly(Gameplay.Team t)
+		{
+			return Gameplay.GameplayManager.Instance.AreFriendly(this.Team, t);
+		}
+
+		public bool IsFriendly(Ship s)
+		{
+			return Gameplay.GameplayManager.Instance.AreFriendly(this.Team, s.Team);
+		}
+
+		public bool IsNeutral(Gameplay.Team t)
+		{
+			return Gameplay.GameplayManager.Instance.AreNeutral(this.Team, t);
+		}
+
+		public bool IsNeutral(Ship s)
+		{
+			return Gameplay.GameplayManager.Instance.AreNeutral(this.Team, s.Team);
+		}
+
 		public bool IsAlive()
 		{
 			int damagablesNotDestroyed = 0;
@@ -59,6 +91,17 @@ namespace VoxelSpace
 
 			return (damagablesNotDestroyed > 0);
 		}
+
+		void OnTriggerEnter(Collider other)
+	    {
+	    	//Ramming!
+			Damagable d = other.gameObject.GetComponent<Damagable>();
+			if (d != null)
+			{
+				d.Damage(this.Damage);
+				return;
+			}
+	    }
 
 		public void MoveTo(Vector3 target)
 		{

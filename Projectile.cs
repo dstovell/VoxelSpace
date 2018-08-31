@@ -13,7 +13,7 @@ namespace VoxelSpace
 		Laser
 	}
 
-	public class Projectile : Damager
+	public class Projectile : Moveable
 	{
 		public ProjectileType Type;
 

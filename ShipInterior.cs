@@ -4,20 +4,11 @@ using System.Collections;
 
 namespace VoxelSpace
 {
-	public class ShipInterior : Showable
+	public class ShipInterior : ShipEntity
 	{
-		protected override void OnShow()
-		{
-			this.gameObject.SetActive(true);
-		}
-
-		protected override void OnHide()
-		{
-			this.gameObject.SetActive(false);
-		}
-
 		public void Awake()
 		{
+			this.InitEntity();
 		}
 
 		public void Update()
