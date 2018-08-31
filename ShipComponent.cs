@@ -8,6 +8,11 @@ namespace VoxelSpace
 	{
 		public Damagable [] Damagables;
 
+		public void FindDamagables()
+		{
+			this.Damagables = this.GetComponentsInChildren<Damagable>();
+		}
+
 		public bool IsAlive()
 		{
 			int damagablesNotDestroyed = 0;

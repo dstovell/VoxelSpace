@@ -36,6 +36,8 @@ namespace VoxelSpace
 			this.Exterior = this.GetComponentInChildren<ShipExterior>();
 
 			this.Turrets = this.GetComponentsInChildren<ShipTurret>();
+
+			this.Damagables = this.GetComponentsInChildren<Damagable>();
 		}
 
 		public bool IsAlive()

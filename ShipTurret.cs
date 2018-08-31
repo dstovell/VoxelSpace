@@ -118,6 +118,7 @@ namespace VoxelSpace
 		public void Awake()
 		{
 			this.ParentShip = this.GetComponentInParent<Ship>();
+			this.FindDamagables();
 		}
 
 		public void Update()
