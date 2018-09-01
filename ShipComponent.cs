@@ -21,7 +21,7 @@ namespace VoxelSpace
 			this.Damagables = this.GetComponentsInChildren<Damagable>();
 		}
 
-		public bool IsAlive()
+		public override bool IsAlive()
 		{
 			int damagablesNotDestroyed = 0;
 
