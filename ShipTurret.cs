@@ -61,6 +61,11 @@ namespace VoxelSpace
 		public void FireAt(Vector3 target)
 		{
 			Vector3 lookDir = Vector3.Normalize( target - this.transform.position );
+			if (lookDir == Vector3.zero)
+			{
+				return;
+			}
+
 			Quaternion targetRotation = Quaternion.LookRotation(lookDir);
 
 			if (Quaternion.Angle(this.transform.rotation, targetRotation) > 1f)
