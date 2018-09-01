@@ -66,6 +66,14 @@ namespace VoxelSpace
 				return;
 			}
 
+			float distanceToTarget = Vector3.Distance(this.TargetPosition, this.transform.position);
+			if (distanceToTarget == 0)
+			{
+				//Hack
+				this.HitCount = 100;
+				return;
+			}
+
 			Vector3 lookDir = Vector3.Normalize( this.TargetPosition - this.transform.position );
 			this.transform.rotation = Quaternion.LookRotation( lookDir );
 
