@@ -5,14 +5,6 @@ using System.Collections.Generic;
 
 namespace VoxelSpace
 {
-	public enum ProjectileType
-	{
-		PDC,
-		Railgun,
-		Torpedo,
-		Laser
-	}
-
 	public class Projectile : Moveable
 	{
 		public ProjectileType Type;
