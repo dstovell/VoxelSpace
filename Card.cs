@@ -1,19 +1,20 @@
 ﻿using UnityEngine;
+using System;
 using System.Collections;
+using System.Collections.Generic;
 
-public class Card : MonoBehaviour
+namespace VoxelSpace
 {
+	public class Card : Spawner
+	{
+		public Sprite CardImage;
 
-	// Use this for initialization
-	void Start ()
-	{
-	
-	}
-	
-	// Update is called once per frame
-	void Update ()
-	{
-	
+		public int InstanceCount = 1;
+
+		public void Awake()
+		{
+			this.InitSpawner(this.InstanceCount);
+		}
 	}
 }
-
+	

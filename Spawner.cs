@@ -9,26 +9,24 @@ namespace VoxelSpace
 	{
 		public GameObject SpawnPrefab;
 
-		public int MaxSpawnables = 50;
-
 		public Spawnable [] Spawnables;
 
-		public void InitSpawner()
+		public void InitSpawner(int maxSpawnables)
 		{
 			if (this.SpawnPrefab != null)
 			{
-				this.Spawnables = new Projectile[this.MaxSpawnables];
+				this.Spawnables = new Spawnable[maxSpawnables];
 				for (int i=0; i<this.Spawnables.Length; i++)
 				{
 					GameObject go = GameObject.Instantiate(this.SpawnPrefab, this.transform);
-					Projectile p = go.GetComponent<Projectile>();
-					if (p == null)
+					Spawnable sp = go.GetComponent<Spawnable>();
+					if (sp == null)
 					{
 						break;
 					}
 
-					p.UnSpawn();
-					this.Spawnables[i] = p;
+					sp.UnSpawn();
+					this.Spawnables[i] = sp;
 				}
 			}
 		}

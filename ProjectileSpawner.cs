@@ -9,9 +9,11 @@ namespace VoxelSpace
 	{
 		public ProjectileType Type;
 
+		public int MaxProjectiles = 50;
+
 		public void Awake()
 		{
-			this.InitSpawner();
+			this.InitSpawner(this.MaxProjectiles);
 		}
 	}
 }

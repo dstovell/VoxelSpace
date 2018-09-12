@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -27,6 +28,14 @@ namespace VoxelSpace
 		public void SetCard(Card c)
 		{
 			this.ActiveCard = c;
+			if ((this.ActiveCard != null) && (this.ActiveCard.CardImage != null))
+			{
+				Image widgetImage = this.Draggable.GetComponentInChildren<Image>();
+				if (widgetImage != null)
+				{
+					widgetImage.sprite = this.ActiveCard.CardImage;
+				}
+			}
 
 			this.Show();
 		}
