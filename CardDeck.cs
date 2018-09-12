@@ -38,7 +38,12 @@ namespace VoxelSpace
 			Card [] allCards = this.GetComponentsInChildren<Card>();
 			for (int i=0; i<allCards.Length; i++)
 			{
-				this.Deck.Add(allCards[i]);
+				Card c = allCards[i];
+				int addCount = (c != null) ? c.InstanceCount : 0;
+				for (int j=0; j<addCount; j++)
+				{
+					this.Deck.Add(allCards[i]);
+				}
 			}
 
 			this.DrawCard(5);
