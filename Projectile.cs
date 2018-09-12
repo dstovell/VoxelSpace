@@ -24,26 +24,15 @@ namespace VoxelSpace
 			this.Collision = this.GetComponent<Collider>();
 		}
 
-		public bool IsSpawnable()
+		public override void OnSpawn(Vector3 position, Vector3 target)
 		{
-			return !this.gameObject.activeSelf;
-		}
-
-		public void Spawn(Vector3 position, Vector3 target)
-		{
-			this.transform.position = position;
-			this.gameObject.SetActive(true);
-
 			this.TargetPosition = target;
 			this.Age = 0;
 			this.HitCount = 0;
 		}
 
-		public void UnSpawn()
+		public override void OnUnSpawn()
 		{
-			this.gameObject.SetActive(false);
-			this.transform.position = Vector3.zero;
-			this.transform.localRotation = Quaternion.identity;
 		}
 
 		public bool IsComplete()
